@@ -1,0 +1,69 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Cliente {{ cliente.nombre ~ ' ' ~ cliente.apellido }}
+{% endblock title %}
+
+{% block body %}
+
+    {{ parent() }}
+    
+	<div class="container well">
+	    <div class="col-md-9">
+	        <h2>{{ cliente.nombre }} {{ cliente.apellido }}</h2>
+	        <br>
+	        <dl>
+	            <dt> Nombre </dt>
+	            <dd>
+	                {{ cliente.nombre }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt> Apellido </dt>
+	            <dd>
+	                {{ cliente.apellido }}
+	                &nbsp;
+	            </dd>
+	            <br>
+
+	            <dt> Email </dt>
+	            <dd>
+	                {{ cliente.email }}
+	                &nbsp;
+	            </dd>
+                <br>
+                
+                <dt> Grupo </dt>
+	            <dd>
+	                {{ cliente.grupo.nombre }}
+	                &nbsp;
+	            </dd>
+                <br>
+                
+                <dt> Observaciones </dt>
+	            <dd>
+                    {% if cliente.observaciones %}
+                        {{ cliente.observaciones }}
+                    {% else %}
+                        <em> El cliente no posee observaciones </em>
+                    {% endif %}
+	                &nbsp;
+	            </dd>
+	            <br>
+	        </dl>
+	    </div>
+	    <div class="col-md-3">
+            <br>
+			<p>
+		    	<a href="{{ path('cliente_cliente_editar', { id: cliente.id }) }}" class="btn btn-primary btn-lg btn-block">
+		    		<span class="glyphicon glyphicon-edit"></span>
+		        	{{ 'Editar cliente'|upper }}
+				 </a>
+			</p>
+			<p>
+			    {{ include('ClienteBundle:Cliente:formularios/borrar.html.twig', { form: formElim, mensaje: '¿Estás seguro/a?' }) }}
+			</p>
+	    </div>
+	</div>
+{% endblock %}

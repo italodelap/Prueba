@@ -1,0 +1,44 @@
+cliente_cliente_home:
+  path:     /home
+  defaults: { _controller: ClienteBundle:Cliente:home }
+
+cliente_cliente_agregar:
+  path:     /cliente/agregar
+  defaults: { _controller: ClienteBundle:Cliente:agregar }
+
+cliente_cliente_crear:
+  path:     /cliente/crear
+  defaults: { _controller: ClienteBundle:Cliente:crear }
+  methods: POST
+
+cliente_cliente_redireccionar_agregar:
+  path:     /cliente/crear
+  defaults:
+    _controller: ClienteBundle:Cliente:agregar
+    path: /cliente/agregar
+    permanent: true
+
+cliente_cliente_ver:
+  path:     /cliente/ver/{id}
+  defaults: { _controller: ClienteBundle:Cliente:ver }
+
+cliente_cliente_editar:
+  path:     /cliente/editar/{id}
+  defaults: { _controller: ClienteBundle:Cliente:editar }
+
+cliente_cliente_actualizar:
+  path:     /cliente/actualizar/{id}
+  defaults: { _controller: ClienteBundle:Cliente:actualizar }
+  methods: [POST, PUT]
+
+cliente_cliente_redireccionar_editar:
+  path:     /cliente/actualizar/{id}
+  defaults:
+    _controller: ClienteBundle:Cliente:editar
+    path: /cliente/editar/{id}
+    permanent: true
+
+cliente_cliente_borrar:
+  path:     /cliente/borrar/{id}
+  defaults: { _controller: ClienteBundle:Cliente:borrar }
+  methods: [POST, DELETE]
